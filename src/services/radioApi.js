@@ -1,8 +1,7 @@
-// src/services/radioApi.js - Korrigierte Version
+// src/services/radioApi.js
 
-// Die Radio-Browser API empfiehlt, einen zufälligen Server aus der Liste zu verwenden
-// Wir verwenden hier einen festen Server für die Einfachheit
-const BASE_URL = '/api/json';
+// Direkte Verwendung der Radio-Browser API
+const BASE_URL = 'https://de1.api.radio-browser.info/json';
 
 // Helper function to handle API responses
 const handleResponse = async (response) => {
@@ -17,7 +16,6 @@ export const radioApi = {
   searchStations: async (filters = {}) => {
     const params = new URLSearchParams();
     
-    // Add filters to params if they exist
     if (filters.name) params.append('name', filters.name);
     if (filters.country) params.append('country', filters.country);
     if (filters.language) params.append('language', filters.language);
@@ -25,16 +23,17 @@ export const radioApi = {
     if (filters.codec) params.append('codec', filters.codec);
     if (filters.minBitrate) params.append('bitrateMin', filters.minBitrate);
     
-    // Always limit results to avoid overwhelming the user
     params.append('limit', '100');
     
-    // Wichtig: Füge die Header hinzu, die die API erwartet
     const headers = {
       'User-Agent': 'RadioBrowserApp/1.0',
       'Content-Type': 'application/json'
     };
     
-    const response = await fetch(`${BASE_URL}/stations/search?${params}`, { headers });
+    const response = await fetch(`${BASE_URL}/stations/search?${params}`, { 
+      headers,
+      mode: 'cors'
+    });
     return handleResponse(response);
   },
 
@@ -46,7 +45,10 @@ export const radioApi = {
     };
     
     // Korrigierter Endpunkt für beliebte Sender
-    const response = await fetch(`${BASE_URL}/stations/topclick/${limit}`, { headers });
+    const response = await fetch(`${BASE_URL}/stations/topclick/${limit}`, { 
+      headers,
+      mode: 'cors'
+    });
     return handleResponse(response);
   },
 
@@ -57,19 +59,24 @@ export const radioApi = {
       'Content-Type': 'application/json'
     };
     
-    // Korrigierter Endpunkt für zufällige Sender
-    const response = await fetch(`${BASE_URL}/stations/search?order=random&limit=${limit}`, { headers });
+    const response = await fetch(`${BASE_URL}/stations/search?order=random&limit=${limit}`, { 
+      headers,
+      mode: 'cors'
+    });
     return handleResponse(response);
   },
 
-  // Aktuelle Songinfo abrufen (falls vom Sender unterstützt)
+  // Aktuelle Songinfo abrufen
   getCurrentTrack: async (stationId) => {
     const headers = {
       'User-Agent': 'RadioBrowserApp/1.0',
       'Content-Type': 'application/json'
     };
     
-    const response = await fetch(`${BASE_URL}/stations/byuuid/${stationId}`, { headers });
+    const response = await fetch(`${BASE_URL}/stations/byuuid/${stationId}`, { 
+      headers,
+      mode: 'cors'
+    });
     return handleResponse(response);
   },
 
@@ -80,11 +87,11 @@ export const radioApi = {
       'Content-Type': 'application/json'
     };
     
-    // Korrigierter Endpunkt für Voting
     const endpoint = type === 'up' ? 'vote' : 'unvote';
     const response = await fetch(`${BASE_URL}/stations/${stationId}/${endpoint}`, { 
       method: 'POST',
-      headers
+      headers,
+      mode: 'cors'
     });
     return handleResponse(response);
   }
