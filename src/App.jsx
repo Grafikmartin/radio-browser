@@ -46,6 +46,7 @@ function App() {
     }
   };
 
+  // Hier fügen wir die fehlende handleSearch Funktion hinzu
   const handleSearch = async (filters) => {
     try {
       setLoading(true);
@@ -81,45 +82,57 @@ function App() {
         <p>Entdecke und höre Radiosender aus aller Welt</p>
       </header>
 
-      <main className="app-content">
-        <div className="cards-container">
-          <Card title="Suche & Filter" icon="🔍">
-            <SearchFilter onSearch={handleSearch} />
-          </Card>
+      {/* Wir entfernen das separate Bild-Element */}
+      {/* <div className="radio-image-container">
+        <img 
+          src="/radio-browser/radio.webp" 
+          alt="Radio" 
+          className="radio-image"
+        />
+      </div> */}
 
-          <Card title="Beliebte Sender" icon="🏆">
-            <div className="card-actions">
-              <button onClick={loadPopularStations}>Beliebte Sender laden</button>
-            </div>
-          </Card>
+      {/* Stattdessen fügen wir einen Container mit Hintergrundbild ein */}
+      <div className="background-container">
+        <main className="app-content">
+          <div className="cards-container">
+            <Card title="Suche & Filter" icon="🔍">
+              <SearchFilter onSearch={handleSearch} />
+            </Card>
 
-          <Card title="Zufällige Sender" icon="🎲">
-            <div className="card-actions">
-              <button onClick={loadRandomStations}>Zufällige Sender laden</button>
-            </div>
-          </Card>
-        </div>
+            <Card title="Beliebte Sender" icon="🏆">
+              <div className="card-actions">
+                <button onClick={loadPopularStations}>Beliebte Sender laden</button>
+              </div>
+            </Card>
 
-        {loading && <div className="loading">Lädt...</div>}
-        {error && <div className="error">{error}</div>}
-
-        {selectedStation && (
-          <div className="player-container">
-            <RadioPlayer 
-              station={selectedStation} 
-              onVote={handleVote} 
-            />
+            <Card title="Zufällige Sender" icon="🎲">
+              <div className="card-actions">
+                <button onClick={loadRandomStations}>Zufällige Sender laden</button>
+              </div>
+            </Card>
           </div>
-        )}
+        </main>
+      </div>
 
-        <div className="stations-container">
-          <h2>Radiosender ({stations.length})</h2>
-          <RadioList 
-            stations={stations} 
-            onStationSelect={handleStationSelect} 
+      {loading && <div className="loading">Lädt...</div>}
+      {error && <div className="error">{error}</div>}
+
+      {selectedStation && (
+        <div className="player-container">
+          <RadioPlayer 
+            station={selectedStation} 
+            onVote={handleVote} 
           />
         </div>
-      </main>
+      )}
+
+      <div className="stations-container">
+        <h2>Radiosender ({stations.length})</h2>
+        <RadioList 
+          stations={stations} 
+          onStationSelect={handleStationSelect} 
+        />
+      </div>
 
       <footer className="app-footer">
         <p>Powered by Radio Browser API</p>
