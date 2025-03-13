@@ -1,21 +1,22 @@
+/* src/components/Card/Card.css */
 .card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 16px;
-    margin: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 250px;
-    height: 80px;
-    overflow: hidden;
-  }
-  
-  .card.expanded {
-    width: 100%;
-    height: auto;
-    max-width: 600px;
-  }
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 170px;
+  min-height: 80px;
+  overflow: hidden;
+}
+
+.card.expanded {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+}
+
 .card-header {
   display: flex;
   align-items: center;

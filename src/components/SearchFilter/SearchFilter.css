@@ -43,3 +43,10 @@
 .search-button:hover {
   background-color: #3a5d97;
 }
+
+@media (max-width: 768px) {
+  .filter-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

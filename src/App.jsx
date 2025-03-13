@@ -46,7 +46,6 @@ function App() {
     }
   };
 
-  // Hier fügen wir die fehlende handleSearch Funktion hinzu
   const handleSearch = async (filters) => {
     try {
       setLoading(true);
@@ -82,16 +81,6 @@ function App() {
         <p>Entdecke und höre Radiosender aus aller Welt</p>
       </header>
 
-      {/* Wir entfernen das separate Bild-Element */}
-      {/* <div className="radio-image-container">
-        <img 
-          src="/radio-browser/radio.webp" 
-          alt="Radio" 
-          className="radio-image"
-        />
-      </div> */}
-
-      {/* Stattdessen fügen wir einen Container mit Hintergrundbild ein */}
       <div className="background-container">
         <main className="app-content">
           <div className="cards-container">

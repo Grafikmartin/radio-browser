@@ -1,4 +1,4 @@
-// src/components/Card/Card.jsx - Korrigierte Version
+// src/components/Card/Card.jsx
 import { useState } from 'react';
 import './Card.css';
 

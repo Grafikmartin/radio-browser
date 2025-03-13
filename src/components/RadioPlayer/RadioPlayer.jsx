@@ -1,4 +1,4 @@
-// src/components/RadioPlayer/RadioPlayer.jsx - Verbesserte Version
+// src/components/RadioPlayer/RadioPlayer.jsx
 import { useState, useRef, useEffect } from 'react';
 import './RadioPlayer.css';
 
@@ -90,7 +90,7 @@ const RadioPlayer = ({ station, onVote }) => {
             <img 
               src={station.favicon} 
               alt={station.name} 
-              onError={(e) => {e.target.onerror = null; e.target.src = '📻';}}
+              onError={(e) => {e.target.onerror = null; e.target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%234a6da7" d="M8 16h8V8H8v8zm4-11a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/></svg>';}}
             />
           ) : (
             <div className="default-logo">📻</div>

@@ -59,4 +59,66 @@
   gap: 20px;
 }
 
-/* Rest des CSS bleibt unverändert */
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.player-container {
+  margin-bottom: 40px;
+}
+
+.stations-container {
+  margin-bottom: 40px;
+}
+
+.stations-container h2 {
+  color: #4a6da7;
+  margin-bottom: 16px;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #4a6da7;
+  font-weight: bold;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  color: #e74c3c;
+  background-color: #fadbd8;
+  border-radius: 4px;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 20px 0;
+  color: #666;
+  border-top: 1px solid #eee;
+  margin-top: 40px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.card-actions button {
+  background-color: #4a6da7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.card-actions button:hover {
+  background-color: #3a5d97;
+}
